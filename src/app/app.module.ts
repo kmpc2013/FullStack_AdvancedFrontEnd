@@ -23,6 +23,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { Main2Component } from './pages/main2/main2.component';
 import { ManipulandoJsonComponent } from './pages/manipulando-json/manipulando-json.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SubRouteComponent } from './pages/sub-route/sub-route.component';
+import { Page1Component } from './pages/sub-route/page1/page1.component';
+import { Page2Component } from './pages/sub-route/page2/page2.component';
+import { PrivadoComponent } from './pages/privado/privado.component';
+import { DetalheComponent } from './pages/detalhe/detalhe.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +41,12 @@ import { ManipulandoJsonComponent } from './pages/manipulando-json/manipulando-j
     LoginComponent,
     MainComponent,
     Main2Component,
-    ManipulandoJsonComponent
+    ManipulandoJsonComponent,
+    SubRouteComponent,
+    Page1Component,
+    Page2Component,
+    PrivadoComponent,
+    DetalheComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +61,8 @@ import { ManipulandoJsonComponent } from './pages/manipulando-json/manipulando-j
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
