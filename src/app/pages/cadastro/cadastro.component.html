@@ -1,5 +1,5 @@
 <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
-  <mat-card class="shipping-card">
+  <mat-card class="shipping-card formCadastro">
     <mat-card-header>
       <mat-card-title>Cadastro</mat-card-title>
     </mat-card-header>
@@ -34,15 +34,15 @@
       </div>
       <div class="col">
         <mat-form-field class="full-width">
-          <input matInput placeholder="Senha" type="password" formControlName="firstName">
-          <mat-error *ngIf="addressForm.controls['firstName'].hasError('required')">
+          <input matInput placeholder="Senha" type="password" formControlName="password">
+          <mat-error *ngIf="addressForm.controls['password'].hasError('required')">
             Senha é <strong>obrigatorio</strong>
           </mat-error>
         </mat-form-field>
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" type="submit">Cadastrar</button>
+      <button mat-raised-button [disabled]="!addressForm.valid" color="primary" type="submit">Cadastrar</button>
     </mat-card-actions>
   </mat-card>
 </form>

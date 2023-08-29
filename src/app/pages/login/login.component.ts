@@ -14,7 +14,9 @@ export class LoginComponent {
     email: [null, Validators.compose([
       Validators.required, Validators.minLength(5), Validators.maxLength(50)])
     ],
-    password: ['', Validators.required]
+    password: [null, Validators.compose([
+      Validators.required, Validators.minLength(5), Validators.maxLength(50)])
+    ],
   });
 
   constructor(private fb:FormBuilder) {}
