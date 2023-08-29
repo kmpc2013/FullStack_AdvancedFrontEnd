@@ -5,11 +5,11 @@ import { User } from 'src/app/models/user';
 
 
 @Component({
-  selector: 'app-cadastro',
-  templateUrl: './cadastro.component.html',
-  styleUrls: ['./cadastro.component.css']
+  selector: 'app-editar',
+  templateUrl: './editar.component.html',
+  styleUrls: ['./editar.component.css']
 })
-export class CadastroComponent {
+export class EditarComponent {
   user: User = new User()
   addressForm = this.fb.group({
     id: '',
