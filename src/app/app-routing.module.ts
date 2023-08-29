@@ -11,15 +11,17 @@ import { Page2Component } from './pages/sub-route/page2/page2.component';
 import { PrivadoComponent } from './pages/privado/privado.component';
 import { autorizadoGuard } from './guards/autorizado.guard';
 import { DetalheComponent } from './pages/detalhe/detalhe.component';
+import { ListaSimplesComponent } from './pages/lista-simples/lista-simples.component';
  
 
 const routes: Routes = [
   {path:'', redirectTo: '/home', pathMatch: 'full'},
   {path:'home', component: HomeComponent},
   {path:'listar', component: ListarComponent},
+  {path:'listar-simples', component: ListaSimplesComponent},
   {path:'cadastro', component: CadastroComponent},
   {path:'login', component: LoginComponent},
-  {path:'detalhe/:id', component: DetalheComponent},
+  {path:'detalhe/:id/:phone', component: DetalheComponent},
   {path:'json', component: ManipulandoJsonComponent},
   {path:'subroute', component: SubRouteComponent,
     children: [
