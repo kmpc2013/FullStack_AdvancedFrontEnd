@@ -11,24 +11,31 @@ import { User } from 'src/app/models/user';
 })
 export class EditarComponent {
   user: User = new User()
-  addressForm = this.fb.group({
-    id: '',
-    company: null,
-    firstName: [null, Validators.compose([
-      Validators.required, 
-      Validators.minLength(3), 
-      Validators.maxLength(70)
-    ])],
-    email: [null, Validators.compose([
-      Validators.required, 
-      Validators.minLength(5), 
-      Validators.maxLength(50),
-      Validators.email
-    ])],
-    phone: [null, Validators.required],  
-    password: [null, Validators.required]
-  });
-  email = this.addressForm.controls['email'];
+  addressForm:any;
+  email:any;
+  constructor(private fb: FormBuilder) {
+    if(localStorage.getItem('user')){
+      this.user = JSON.parse(localStorage.getItem('user') || '{}');
+    }
+    this.addressForm = this.fb.group({
+      name: [null, Validators.compose([
+        Validators.required, 
+        Validators.minLength(3), 
+        Validators.maxLength(70)
+      ])],
+      email: [null, Validators.compose([
+        Validators.required, 
+        Validators.minLength(5), 
+        Validators.maxLength(50),
+        Validators.email
+      ])],
+      phone: [null, Validators.required],  
+      password: [null, Validators.required]
+    });
+    this.email = this.addressForm.controls['email'];
+  }
+  
+  
   getErrorMessage(){
       if(this.email.hasError('required')){
         return "O email é obrigatório"
@@ -36,13 +43,13 @@ export class EditarComponent {
       return this.email.hasError('email') ? "Voce deve preencher um email valido" : "";
   }
 
-  constructor(private fb: FormBuilder) {}
+  
   
   onSubmit(): void {
     this.user.id = '1';
     
-    if(this.addressForm.controls['firstName'].value)
-    this.user.firstName = this.addressForm.controls['firstName'].value;
+    if(this.addressForm.controls['name'].value)
+    this.user.name = this.addressForm.controls['name'].value;
     
     if(this.addressForm.controls['email'].value)
     this.user.email = this.addressForm.controls['email'].value;

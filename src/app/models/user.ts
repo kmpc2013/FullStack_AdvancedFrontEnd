@@ -1,7 +1,8 @@
 export class User{
     public id: String = '';
-    public firstName: String = '';
+    public name: String = '';
     public email: String = '';
     public phone: String = '';
     public password: String = '';
+    public cpf: String = '';
 }

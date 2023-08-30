@@ -31,6 +31,8 @@ import { PrivadoComponent } from './pages/privado/privado.component';
 import { DetalheComponent } from './pages/detalhe/detalhe.component';
 import { ListaSimplesComponent } from './pages/lista-simples/lista-simples.component';
 import { EditarComponent } from './pages/editar/editar.component';
+import { NgxMaskModule } from 'ngx-mask';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -66,9 +68,12 @@ import { EditarComponent } from './pages/editar/editar.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxMaskModule.forRoot({
+      validation: true,
+    })
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
