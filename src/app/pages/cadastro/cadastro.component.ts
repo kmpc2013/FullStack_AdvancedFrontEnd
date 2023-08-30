@@ -5,12 +5,12 @@ import { GenericValidator } from 'src/app/comum/validador';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 
-
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
-  styleUrls: ['./cadastro.component.css']
+  styleUrls: ['./cadastro.component.css'],
 })
+
 export class CadastroComponent {
   user: User = new User()
   addressForm = this.fb.group({
@@ -28,6 +28,7 @@ export class CadastroComponent {
       Validators.email
     ])],
     phone: [null, Validators.required],  
+    dataNascimento: [null, Validators.required],  
     cpf: [null, Validators.compose([
       Validators.required,
       GenericValidator.isValidCpf()])], 
@@ -58,6 +59,9 @@ export class CadastroComponent {
 
     if(this.addressForm.controls['password'].value)
     this.user.password = this.addressForm.controls['password'].value;
+
+    if(this.addressForm.controls['dataNascimento'].value)
+    this.user.dateBirth = this.addressForm.controls['dataNascimento'].value;
     
     //alert('Entrou no onSubmit!');
     console.log(this.user);

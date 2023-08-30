@@ -13,6 +13,8 @@ import { autorizadoGuard } from './guards/autorizado.guard';
 import { DetalheComponent } from './pages/detalhe/detalhe.component';
 import { ListaSimplesComponent } from './pages/lista-simples/lista-simples.component';
 import { EditarComponent } from './pages/editar/editar.component';
+import { ModalComponent } from './pages/modal/modal.component';
+import { Lista2Component } from './pages/lista2/lista2.component';
  
 
 const routes: Routes = [
@@ -23,8 +25,10 @@ const routes: Routes = [
   {path:'cadastro', component: CadastroComponent},
   {path:'editar', component: EditarComponent},
   {path:'login', component: LoginComponent},
+  {path:'modal', component: ModalComponent},
   {path:'detalhe/:id/:phone', component: DetalheComponent},
   {path:'json', component: ManipulandoJsonComponent},
+  {path:'lista2', component: Lista2Component},
   {path:'subroute', component: SubRouteComponent,
     children: [
       {path:'page1', component: Page1Component },

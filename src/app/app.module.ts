@@ -33,6 +33,17 @@ import { ListaSimplesComponent } from './pages/lista-simples/lista-simples.compo
 import { EditarComponent } from './pages/editar/editar.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { UserService } from './services/user.service';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import {Component} from '@angular/core';
+import { DialogContentExampleDialog, ModalComponent } from './pages/modal/modal.component';
+import { Lista2Component } from './pages/lista2/lista2.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+
 
 @NgModule({
   declarations: [
@@ -52,7 +63,9 @@ import { UserService } from './services/user.service';
     PrivadoComponent,
     DetalheComponent,
     ListaSimplesComponent,
-    EditarComponent
+    EditarComponent,
+    ModalComponent,
+    Lista2Component
   ],
   imports: [
     BrowserModule,
@@ -69,11 +82,21 @@ import { UserService } from './services/user.service';
     MatIconModule,
     MatListModule,
     HttpClientModule,
+    MatFormFieldModule,  
+    MatInputModule,      
+    MatDatepickerModule,      
+    MatNativeDateModule,
+    MatDialogModule,
+    DialogContentExampleDialog,
     NgxMaskModule.forRoot({
       validation: true,
-    })
+    }),
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [UserService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }

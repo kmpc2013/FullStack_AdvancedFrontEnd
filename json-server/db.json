@@ -23,6 +23,23 @@
       "phone": "11111111111",
       "password": "123123123",
       "cpf": "10241046998"
+    },
+    {
+      "id": 4,
+      "name": "Luis Fernandes",
+      "email": "luis.fernandes@sercompe.com.br",
+      "phone": "47988373112",
+      "password": "1234567890",
+      "cpf": "10241046998"
+    },
+    {
+      "id": 5,
+      "name": "Luis Fernandes",
+      "email": "sdsad@asdsad",
+      "phone": "22222222222",
+      "password": "123123213",
+      "cpf": "10241046998",
+      "dateBirth": "2023-08-24T03:00:00.000Z"
     }
   ]
 }
