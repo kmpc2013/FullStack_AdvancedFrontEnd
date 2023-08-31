@@ -1,10 +1,9 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { Lista2DataSource, Lista2Item } from './lista2-datasource';
-import { User } from 'src/app/models/user';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -12,25 +11,25 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './lista2.component.html',
   styleUrls: ['./lista2.component.css']
 })
-export class Lista2Component implements AfterViewInit {
-  users:User[] = [];
-  constructor(private router:Router, public service:UserService) {  }
+export class Lista2Component implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatTable) table!: MatTable<Lista2Item>;
+  @ViewChild(MatTable, { static: false }) table!: MatTable<User>;
   dataSource = new MatTableDataSource <User> ([]);
-
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name', 'email', 'phone', 'cpf'];
-
+  constructor(private router:Router, public service:UserService) {  }
   ngOnInit() {
     this.getUsers()
   }
-  getUsers(): void{
+  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
+  displayedColumns = ['id', 'name', 'email', 'phone', 'cpf'];
+
+  getUsers(): void {
     this.service.getUsers().subscribe(
       {
         next: (response) =>{
           this.dataSource = new MatTableDataSource <User> (response);
+          this.dataSource.sort = this.sort;
+          this.dataSource.paginator = this.paginator;
         },
         error: (erro: any) =>{
           console.log(erro);
@@ -40,9 +39,9 @@ export class Lista2Component implements AfterViewInit {
     )
 
   }
-  ngAfterViewInit(): void {
+  ngAfterViewInit() {
     //this.dataSource.sort = this.sort;
     //this.dataSource.paginator = this.paginator;
-    //this.table.dataSource = this.dataSource;
+    this.table.dataSource = this.dataSource;
   }
 }
