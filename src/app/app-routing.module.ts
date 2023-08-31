@@ -37,7 +37,8 @@ const routes: Routes = [
   },
   { path: 'privado', component: PrivadoComponent,
     canActivate: [autorizadoGuard]
-  }
+  },
+  { path: 'pages/lazy', loadChildren: () => import('./pages/lazy/lazy.module').then(m => m.LazyModule) }
 ];
 
 @NgModule({
